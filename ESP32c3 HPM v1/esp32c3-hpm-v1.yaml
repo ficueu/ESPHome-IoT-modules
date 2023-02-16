@@ -5,6 +5,9 @@ substitutions:
 esphome:
   name: esp32c3-hpm-v1
   name_add_mac_suffix: True
+  project:
+    name: ficu.esp32c3-hpm-v1
+    version: "1.0"
   platformio_options:
     board_build.flash_mode: dio
   on_boot:
