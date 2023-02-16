@@ -45,7 +45,7 @@ wifi:
 captive_portal:
 
 dashboard_import:
-  package_import_url: github://ficueu/ESPHome-IoT-modules/esp32c3-hpm-v1.yaml@main
+  package_import_url: github://ficueu/ESPHome-IoT-modules/ESP32c3-HPM-v1/esp32c3-hpm-v1.yaml@main
 
 globals:
   - id: color_r
@@ -217,8 +217,8 @@ switch:
 
 ld2410:
   timeout: 5s
-  max_move_distance: 4.5m
-  max_still_distance: 4.5m
+  max_move_distance: 6m
+  max_still_distance: 6m
   g0_move_threshold: 50
   g0_still_threshold: 0
   g1_move_threshold: 50
