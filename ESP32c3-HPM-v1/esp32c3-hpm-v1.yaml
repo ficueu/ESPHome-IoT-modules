@@ -4,7 +4,6 @@ substitutions:
 
 esphome:
   name: esp32c3-hpm-v1
-  name_add_mac_suffix: True
   project:
     name: ficu.esp32c3-hpm-v1
     version: "1.0"
@@ -47,6 +46,7 @@ captive_portal:
 dashboard_import:
   package_import_url: github://ficueu/ESPHome-IoT-modules/ESP32c3-HPM-v1/esp32c3-hpm-v1.yaml@main
   import_full_config: true
+
 globals:
   - id: color_r
     type: int
