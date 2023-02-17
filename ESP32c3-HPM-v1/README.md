@@ -24,6 +24,7 @@
 ## STL files
 
 [Case V1.0](https://github.com/ficueu/ESPHome-IoT-modules/tree/main/ESP32c3-HPM-v1/Case%20v1.0%20STL)
+
 [Case V1.2](https://github.com/ficueu/ESPHome-IoT-modules/tree/main/ESP32c3-HPM-v1/Case%20v1.2%20STL)
 
 ## How to open
