@@ -7,11 +7,13 @@
 - AHT21 - temperature and humidity sensor (at separate board)
 - 2EOL/NC output with tamper on screw terminal - to use with alarm systems
 - RGB LED - to inform about motion (fully software controllable)
+- bt proxy avaliable (better performance with esp-idf, to get it LED need to be disabled, factory disabled)
 - 4 GPIO available for users purposes
 - I2C pads on board
 - DC INPUT 6-24V - by screw terminal
 - USB C for programming or powering from 5V
 - 3D printed case
+- 
 
 <img src="https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP32c3-HPM-v1/Images/20230216_174952_1.jpg" width=50% height=50%>
 <img src="https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP32c3-HPM-v1/Images/20230216_175025_1.jpg" width=50% height=50%>
