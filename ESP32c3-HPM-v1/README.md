@@ -1,10 +1,8 @@
 # Human Presence Module v.1.0
 
--ESPHome compatible
-
--ESP32c3 - WiFi, BLE, integrated antenna
-
--LD2410 - 24GHz mmWave motion and presence sensor
+- ESPHome compatible
+- ESP32c3 - WiFi, BLE, integrated antenna
+- LD2410 - 24GHz mmWave motion and presence sensor
 
 -BH1750 - ambient light sensor
 
