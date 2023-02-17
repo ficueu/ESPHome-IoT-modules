@@ -14,8 +14,8 @@
 - 3D printed case
 
 <img src="https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP32c3-HPM-v1/Images/20230216_174952_1.jpg" width=50% height=50%>
-![IMG2](https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP32c3-HPM-v1/Images/20230216_175025_1.jpg)
-![IMG3](https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP32c3-HPM-v1/Images/20230217_175701_1.jpg)
+<img src="https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP32c3-HPM-v1/Images/20230216_175025_1.jpg" width=50% height=50%>
+<img src="https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP32c3-HPM-v1/Images/20230217_175701_1.jpg" width=50% height=50%>
 
 ## ESPHome yaml config file
 
@@ -30,4 +30,4 @@
 
 Simply put something between 2 half of the case to separate it.
 
-![IMG3](https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP32c3-HPM-v1/Images/20230217_175621_1.jpg)
+<img src="https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP32c3-HPM-v1/Images/20230217_175621_1.jpg" width=50% height=50%>
