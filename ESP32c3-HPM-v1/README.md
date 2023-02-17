@@ -2,7 +2,7 @@
 
 - ESPHome compatible
 - ESP32c3 - WiFi, BLE, integrated antenna
-- LD2410 - 24GHz mmWave motion and presence sensor
+- LD2410 - 24GHz mmWave motion and presence sensor (board is ready for DFROBOT SEN0395 sensor, you can simply replace LD2410 for DFROBOT sensor)
 - BH1750 - ambient light sensor
 - AHT21 - temperature and humidity sensor (at separate board)
 - 2EOL/NC output with tamper on screw terminal - to use with alarm systems
