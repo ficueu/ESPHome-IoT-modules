@@ -1,0 +1,99 @@
+esphome:
+  name: esp-poe-mm-v10-zb
+  friendly_name: esp-poe-mm-v1.0-zb
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+status_led:
+  pin:
+    number: 2
+    inverted: true
+    
+ethernet:
+  type: LAN8720
+  mdc_pin: GPIO23
+  mdio_pin: GPIO18
+  clk_mode: GPIO17_OUT
+  phy_addr: 1
+  power_pin: GPIO12
+  
+  
+#UART Settings
+uart:
+  - id: ZIGBEE
+    rx_pin: GPIO34
+    tx_pin: GPIO15
+    baud_rate: 115200
+
+web_server:
+  port: 80
+  version: 1
+  
+external_components:
+  - source: github://oxan/esphome-stream-server
+
+
+button:
+  - platform: template
+    name: "ZigBee force update"
+    on_press:
+      - output.turn_on: zbBSL
+      - delay: 1s
+      - output.turn_on: zbRST
+      - delay: 1s 
+      - output.turn_off: zbRST
+      - delay: 10s
+      - output.turn_off: zbBSL
+
+  - platform: output
+    name: "ZigBee reset"
+    output: zbRST
+    id: btnzbRST
+    duration: 20ms
+
+output:
+  - platform: gpio
+    pin: 32
+    id: zbRST
+    inverted: yes
+  - platform: gpio
+    pin: 33
+    id: zbBSL
+    inverted: yes
+
+switch:
+  - platform: restart
+    name: "Gateway Restart"
+ 
+stream_server:
+  uart_id: ZIGBEE
+  port: 1234
+
+sensor:
+  - platform: adc
+    attenuation: 11dB
+    filters:
+      - multiply: 20.6
+    pin: GPIO35
+    name: "Bus Voltage"
+    update_interval: 60s
+    
+esp32_ble_tracker:
+  scan_parameters:
+    interval: 1100ms
+    window: 1100ms
+
+bluetooth_proxy:
+  active: true
+    
