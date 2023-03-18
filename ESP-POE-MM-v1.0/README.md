@@ -20,8 +20,8 @@ Features:
 
 ### DO NOT POWER ON MODULE WITHOUT ANTENNAS
 
-Example ESPHome yaml file (RS485 and CAN): 
-Example ESPHome yaml file (ZigBee): 
+Example ESPHome yaml file (RS485 and CAN): https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-POE-MM-v1.0/esp-poe-mm-v10.yaml
+Example ESPHome yaml file (ZigBee): https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-POE-MM-v1.0/esp-poe-mm-v10-zb.yaml
 
 
 Pinout (top screw terminal connector):
@@ -137,4 +137,4 @@ Verifying by comparing CRC32 calculations.
 If error is occured "ERROR: Timeout waiting for ACK/NACK after 'Send data (0x24)'" back to step 3. and try again.
 
 
-![alt text]()
+![alt text](https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-POE-MM-v1.0/images/ESP-POE-MM-v1.0-DESC.png)
