@@ -27,8 +27,11 @@ Example ESPHome yaml file (ZigBee): https://github.com/ficueu/ESPHome-IoT-module
 ![alt text](https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-POE-MM-v1.0/images/ESP-POE-MM-v1.0-DESC.png)
 
 ORANGE: solder jumpers with 3 pads, connect middle with left or right pad to use right signal (all jumpers has description eg. A|32 - if you want to use signal 32 - solder middle and right pad, to use A signal - solder middle and left pad).
+
 BLUE: termination jumpers - solder jumper to enable 120 Ohm termination on bus.
+
 BROWN: enable jumpers - if you want to use GPIO pins which are shared with transceivers - please disconnect the jumpers.
+
 YELLOW: passive PoE enable jumper.
 
 Pinout (top screw terminal connector):
