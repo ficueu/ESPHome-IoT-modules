@@ -1,16 +1,34 @@
+substitutions:
+  name: "esp32-poe-mm-v10-zb"
+  friendly_name: ESP32 PoE Multi Gateway v1.0 (ZB)
+
 esphome:
-  name: esp-poe-mm-v10-zb
-  friendly_name: esp-poe-mm-v1.0-zb
+  name: "${name}"
+  friendly_name: "${friendly_name}"
+
+  #name_add_mac_suffix: true
+
+  project:
+    name: "ficueu.esp-mm-v10-zb"
+    version: "1.0"
+
+  on_boot:
+    priority: 800.0
+    then:
+      - output.turn_off: zbBSL
+      - output.turn_off: zbRST
 
 esp32:
   board: esp32dev
   framework:
     type: arduino
 
-# Enable logging
+dashboard_import:
+  package_import_url: github://ficueu/ESPHome-IoT-modules/tree/main/ESP-POE-MM-v1.0/esp-poe-mm-v10-zb.yaml@main
+  import_full_config: true
+
 logger:
 
-# Enable Home Assistant API
 api:
 
 ota:
@@ -42,7 +60,6 @@ web_server:
   
 external_components:
   - source: github://oxan/esphome-stream-server
-
 
 button:
   - platform: template
@@ -79,15 +96,6 @@ switch:
 stream_server:
   uart_id: ZIGBEE
   port: 1234
-
-sensor:
-  - platform: adc
-    attenuation: 11dB
-    filters:
-      - multiply: 20.6
-    pin: GPIO35
-    name: "Bus Voltage"
-    update_interval: 60s
     
 esp32_ble_tracker:
   scan_parameters:
