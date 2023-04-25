@@ -81,11 +81,11 @@ button:
 
 output:
   - platform: gpio
-    pin: 32
+    pin: 16
     id: zbRST
     inverted: yes
   - platform: gpio
-    pin: 33
+    pin: 32
     id: zbBSL
     inverted: yes
 
