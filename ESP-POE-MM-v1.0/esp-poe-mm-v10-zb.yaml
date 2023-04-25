@@ -24,7 +24,7 @@ esp32:
     type: arduino
 
 dashboard_import:
-  package_import_url: github://ficueu/ESPHome-IoT-modules/tree/main/ESP-POE-MM-v1.0/esp-poe-mm-v10-zb.yaml@main
+  package_import_url: github://ficueu/ESPHome-IoT-modules/blob/main/ESP-POE-MM-v1.0/esp-poe-mm-v10-zb.yaml@main
   import_full_config: true
 
 logger:
