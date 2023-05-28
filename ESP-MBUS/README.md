@@ -12,6 +12,8 @@ Features:
 
 ### DO NOT POWER ON MODULE WITHOUT ANTENNAS
 
+## ESPHome yaml config file
+
 Example ESPHome yaml file: https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-MBUS/esp-mbus-v10.yaml
 
 

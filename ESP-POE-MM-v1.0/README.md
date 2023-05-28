@@ -20,9 +20,12 @@ Features:
 
 ### DO NOT POWER ON MODULE WITHOUT ANTENNAS
 
+## ESPHome yaml config file
+
 Example ESPHome yaml file (RS485 and CAN): https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-POE-MM-v1.0/esp-poe-mm-v10.yaml
 
 Example ESPHome yaml file (ZigBee): https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-POE-MM-v1.0/esp-poe-mm-v10-zb.yaml
+
 
 ![alt text](https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-POE-MM-v1.0/images/ESP-POE-MM-v1.0-DESC.png)
 
