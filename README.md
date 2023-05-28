@@ -18,7 +18,7 @@
 
  ESP32 based module with CC1101.
 
- 4. RGBWW controller - COMING SOON
+4. RGBWW controller - COMING SOON
 
  ESP32C3 based module with 5 LED channel, dual power input and 4 GPIO for advanced users.
 
