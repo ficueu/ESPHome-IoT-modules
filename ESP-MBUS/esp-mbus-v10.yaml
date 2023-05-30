@@ -36,7 +36,7 @@ wifi:
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: "esp-mbus Fallback Hotspot"
+    ssid: "ESP-MBUS"
     password: "12345678"
 
 captive_portal:
