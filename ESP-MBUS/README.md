@@ -1,7 +1,7 @@
 # ESP-MBUS-v1.0
 ESP32C3-MBUS: wM-BUS based on CC1101 gateway
 
-Thanks to SzczepanLeon for ESPHome wbbus component https://github.com/SzczepanLeon/esphome-components
+Thanks to SzczepanLeon for ESPHome wmbus component https://github.com/SzczepanLeon/esphome-components
 
 Features:
 * ESPHome compatible,
