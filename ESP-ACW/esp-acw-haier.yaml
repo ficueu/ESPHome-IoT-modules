@@ -1,5 +1,4 @@
 substitutions:
-  devicename: "esp-acw-haier"
   name: "esp-acw-haier"
   friendly_name: "ESP32C3 ACW v1.0 (Haier)"
 
@@ -26,6 +25,10 @@ logger:
 api:
 
 ota:
+
+web_server:
+  port: 80
+  version: 1
 
 dashboard_import:
   package_import_url: github://ficueu/ESPHome-IoT-modules/ESP-ACW/esp-acw-haier.yaml@main
@@ -62,12 +65,12 @@ climate:
   - platform: haier
     id: haier_ac
     protocol: hOn
-    name: "${devicename}" 
+    name: "Klimatyzacja" 
     uart_id: uart_haier
     wifi_signal: true           # Optional, default true, enables WiFI signal transmission from ESP to AC
     beeper: true                # Optional, default true, disables beep on commands from ESP
     outdoor_temperature:        # Optional, outdoor temperature sensor
-      name: "${devicename} outdoor temp"
+      name: "Temperatura zewnętrzna"
     visual:                     # Optional, you can use it to limit min and max temperatures in UI (not working for remote!)
       min_temperature: 16 °C
       max_temperature: 30 °C
@@ -87,42 +90,86 @@ climate:
 
 button:
   - platform: template
-    name: "${devicename} health on (uvc)"
+    name: "Health on (uvc)"
     on_press:
       then:
         - climate.haier.health_on: haier_ac
   - platform: template
-    name: "${devicename} health off (uvc)"
+    name: "Health off (uvc)"
     on_press:
       then:
         - climate.haier.health_off: haier_ac
   - platform: template
-    name: "${devicename} self-cleaning"
+    name: "Self-cleaning"
     on_press:
       then:
         - climate.haier.start_self_cleaning: haier_ac
   - platform: template
-    name: "${devicename} steri-cleaning"
+    name: "Steri-cleaning"
     on_press:
       then:
         - climate.haier.start_steri_cleaning: haier_ac
   - platform: template
-    name: "${devicename} beeper on"
+    name: "Beeper on"
     on_press:
       then:
         - climate.haier.beeper_on: haier_ac
   - platform: template
-    name: "${devicename} beeper off"
+    name: "Beeper off"
     on_press:
       then:
         - climate.haier.beeper_off: haier_ac
   - platform: template
-    name: "${devicename} display off"
+    name: "Display off"
     on_press:
       then:
         - climate.haier.display_off: haier_ac
   - platform: template
-    name: "${devicename} display on"
+    name: "Display on"
     on_press:
       then:
-        - climate.haier.display_on: haier_ac    
+        - climate.haier.display_on: haier_ac
+
+select:
+  - platform: template
+    id: nawiew_poziomy
+    name: "Nawiew poziomy"
+    entity_category: config
+    icon: mdi:arrow-expand-horizontal
+    optimistic: true
+    restore_value: true
+    initial_option: Środek 
+    options:
+      - Mocno lewo
+      - Lewo
+      - Środek
+      - Prawo
+      - Mocno prawo
+    on_value:
+      then:
+        - climate.haier.set_horizontal_airflow:
+           id: haier_ac
+           horizontal_airflow: !lambda |-
+             return esphome::haier::AirflowHorizontalDirection(i);
+  
+  - platform: template
+    id: nawiew_pionowy
+    name: "Nawiew pionowy"
+    entity_category: config
+    icon: mdi:arrow-expand-vertical
+    optimistic: true
+    restore_value: true
+    initial_option: Środek 
+    options:
+      - Zdrowy góra
+      - Mocno góra
+      - Góra
+      - Środek
+      - Dół
+      - Zdrowy dół
+    on_value:
+      then:
+        - climate.haier.set_vertical_airflow:
+           id: haier_ac
+           vertical_airflow: !lambda |-
+             return esphome::haier::AirflowVerticalDirection(i);
