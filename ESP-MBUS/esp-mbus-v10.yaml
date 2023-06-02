@@ -23,7 +23,7 @@ logger:
   baud_rate: 0
 
 dashboard_import:
-  package_import_url: github://ficueu/ESPHome-IoT-modules/blob/main/ESP-MBUS/esp-mbus-v10.yaml@main
+  package_import_url: github://ficueu/ESPHome-IoT-modules/ESP-MBUS/esp-mbus-v10.yaml@main
   import_full_config: true
 
 api:
