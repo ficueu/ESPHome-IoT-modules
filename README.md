@@ -18,7 +18,9 @@
 
  ESP32 based module with CC1101.
 
-4. RGBWW controller - COMING SOON
+[4. RGBWW controller - COMING SOON](https://github.com/ficueu/ESPHome-IoT-modules/tree/main/ESP-RGBWW)
+
+<img src=https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-RGBWW/images/img1.png width=20% height=20%>
 
  ESP32C3 based module with 5 LED channel, dual power input and 4 GPIO for advanced users.
 
