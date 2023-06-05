@@ -14,7 +14,7 @@ Features:
 * 16A screw terminal block connectors for high power input/output,
 * LED: status (green).
 
-![alt text](https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-RGBWW/images/img1.png)
+![alt text](https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-RGBWW/images/img1.jpg)
 
 ## PROJECT STATUS: testing max power capability and heat dissipation.
 
