@@ -1,0 +1,69 @@
+substitutions:
+  devicename: "esp-acw-tuya"
+  name: "esp-acw-tuya"
+  friendly_name: "ESP32C3 ACW v1.0 (Tuya)"
+
+esphome:
+  name: "${name}"
+  friendly_name: "${friendly_name}"
+  platformio_options:
+    board_build.flash_mode: dio
+  
+  #name_add_mac_suffix: true
+
+  project:
+    name: "ficueu.esp-acw-v10-tuya"
+    version: "1.0"
+
+esp32:
+  board: esp32-c3-devkitm-1
+  framework:
+    type: arduino
+
+logger:
+  baud_rate: 0
+
+api:
+
+ota:
+
+dashboard_import:
+  package_import_url: github://ficueu/ESPHome-IoT-modules/ESP-ACW/esp-acw-tuya.yaml@main
+  import_full_config: true
+
+wifi:
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "ESP-ACW-TUYA"
+    password: "12345678"
+
+captive_portal:
+
+web_server:
+  port: 80
+  version: 1
+  
+status_led:
+  pin:
+    number: 10
+    inverted: false
+
+uart:
+    rx_pin: GPIO6
+    tx_pin: GPIO7
+    baud_rate: 9600
+    id: uart_tuya
+    debug:
+      direction: BOTH
+
+tuya:
+  uart_id: uart_tuya
+  
+climate:
+  - platform: tuya
+    name: "My Climate Device"
+    switch_datapoint: 1
+    target_temperature_datapoint: 3
+    current_temperature_datapoint: 4
+    eco_datapoint: 7
+    eco_temperature: 20 °C
