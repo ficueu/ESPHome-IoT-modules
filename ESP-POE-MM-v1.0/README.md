@@ -7,12 +7,12 @@ Features:
 * Ebyte E72-2G4M20S1E (CC2652p with U.FL connector) as ZigBee coordinator (on external board),
 * POE 802.3af/802.3at (36-57 VDC) with LAN8720,
 * passive PoE 12-57V (experimental, need to solder jumper on PCB),
-* USBC for flashing, based on CH340C (can be used for powering),
+* USBC for flashing, based on CH340C (not recommended for powering),
 * power connector: 10-57 VDC (abs max 70V - needs to replace capacitor),
 * external connectors: 10xSCREW TERMINALS (3 fixed for: GND, 5V and 3.3V, others for GPIO or RS485/CAN),
 * internal connectors: 10xGPIO (4, 5, 13, 14, 15, 16, 32, 33, 34, 35)
-* support for 2xRS485/MODBUS,
-* support for CAN (canbus),
+* support for 2xRS485/MODBUS (extended version),
+* support for CAN (extended version),
 * galvanic separation from PoE or screw terminal voltage input,
 * LEDs: power (green) and status (amber),
 * external antennas for WiFi/BLE and ZigBee
