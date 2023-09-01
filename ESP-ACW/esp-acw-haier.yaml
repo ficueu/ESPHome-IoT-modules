@@ -77,7 +77,7 @@ climate:
       temperature_step: 1 °C
     supported_modes:            # Optional, can be used to disable some modes if you don't need them
     - 'OFF'
-    - AUTO
+    - HEAT_COOL
     - COOL
     - HEAT
     - DRY
