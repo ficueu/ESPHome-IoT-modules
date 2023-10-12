@@ -13,7 +13,7 @@ Features:
 * passive PoE 12-57V (experimental, need to solder jumper on PCB),
 * USBC for flashing, based on CH340C (not recommended for powering),
 * power connector: 10-57 VDC (abs max 70V - needs to replace capacitor),
-* external connectors: 10xSCREW TERMINALS (3 fixed for: GND, 5V and 3.3V, others for GPIO or RS485/CAN),
+* external connectors: 10xSCREW TERMINALS (3 fixed for: GND, 5V and 3.3V, others for GPIO - they can be shared with Zigbee module or RS485/CAN),
 * internal connectors: 10xGPIO (4, 5, 13, 14, 15, 16, 32, 33, 34, 35)
 * support for 2xRS485/MODBUS (extended version),
 * support for CAN (extended version),
@@ -34,11 +34,11 @@ Extended setup:
 
 1. Add ESPHome addon to your Home Assistant.
 2. Plug device via PoE to network.
-3. Click [b]Adopt[/b] in your ESPHome addon (device should be named ESP32 PoE Multi Gateway).
-4. Click [b]Install[/b] and wait until flashing is done.
-5. Click [b]LOGS[/b] and search for IP address for this device.
+3. Click **Adopt** in your ESPHome addon (device should be named ESP32 PoE Multi Gateway).
+4. Click **Install** and wait until flashing is done.
+5. Click **LOGS** and search for IP address for this device.
 6. Add Zigbee2MQTT addon to your Home Assistant.
-7. Change config for Zigbee2MQTT addon in [b]serial:[/b] to (note! change only YOUR-IP, ports should be always :1234):
+7. Change config for Zigbee2MQTT addon in **serial:** to (note! change only YOUR-IP, port should be always :1234):
 ```
   port: tcp://YOUR-IP:1234
 ```
