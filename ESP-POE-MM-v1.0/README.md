@@ -38,7 +38,8 @@ Extended setup:
 4. Click **Install** and wait until flashing is done.
 5. Click **LOGS** and search for IP address for this device.
 6. Add Zigbee2MQTT addon to your Home Assistant.
-7. Change config for Zigbee2MQTT addon in **serial:** to (note! change only YOUR-IP, port should be always :1234):
+7. Change config for Zigbee2MQTT addon in **serial:** to:
+(note! change only YOUR-IP, port should be always :1234)
 ```
   port: tcp://YOUR-IP:1234
 ```
