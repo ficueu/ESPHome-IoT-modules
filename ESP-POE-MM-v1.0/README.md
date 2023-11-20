@@ -127,7 +127,6 @@ uart:
     tx_pin: GPIO15
     baud_rate: 9600
 
-
   - id: RS2
     rx_pin: GPIO39
     tx_pin: GPIO14
@@ -142,10 +141,10 @@ uart:
 
 modbus:
   - id: MODBUS1
-    flow_control_pin: 13  
+    flow_control_pin: 16  
     uart_id: RS1
   - id: MODBUS2
-    flow_control_pin: 16  
+    flow_control_pin: 13  
     uart_id: RS2
 
 
