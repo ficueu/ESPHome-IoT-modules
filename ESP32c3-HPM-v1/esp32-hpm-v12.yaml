@@ -1,0 +1,291 @@
+substitutions:
+  name: esp32-hpm-v12
+  friendly_name: ESP32 HPM v1.2
+  led_brightness: 50%
+  
+esphome:
+  name: "${name}"
+  friendly_name: "${friendly_name}"
+
+  #name_add_mac_suffix: true
+
+  project:
+    name: ficu.esp32-hpm-v12
+    version: "1.2"
+
+  platformio_options:
+    board_build.flash_mode: dio
+
+  on_boot:
+    priority: 600
+    then:
+      - light.turn_on: 
+          id: led1
+          brightness: $led_brightness
+          red: !lambda "return id(color_r);"
+          green: !lambda "return id(color_g);"
+          blue: !lambda "return id(color_b);"
+      - switch.turn_off: btswitch
+
+esp32:
+  board: esp32-c3-devkitm-1
+  framework:
+    type: esp-idf
+    # version: 5.0.0
+
+logger:
+  baud_rate: 115200
+  hardware_uart: USB_SERIAL_JTAG
+
+api:
+
+ota:
+
+web_server:
+  port: 80
+  version: 1
+  
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "ESP32C3-HPM"
+    password: "12345678" #please change it or remove after adopting
+
+captive_portal:
+
+
+dashboard_import:
+  package_import_url: github://ficueu/ESPHome-IoT-modules/ESP32c3-HPM-v1/esp32-hpm-v12.yaml@main
+  import_full_config: true
+
+globals:
+  - id: color_r
+    type: int
+    restore_value: no
+    initial_value: "0"
+  - id: color_g
+    type: int
+    restore_value: no
+    initial_value: "0"
+  - id: color_b
+    type: int
+    restore_value: no
+    initial_value: "0"
+
+i2c:
+  scl: GPIO0
+  sda: GPIO1
+  scan: true
+
+uart:
+  id: uart_sen
+  tx_pin: GPIO21
+  rx_pin: GPIO20
+  baud_rate: 256000 
+  parity: NONE
+  stop_bits: 1
+
+ld2410:
+
+sensor:
+  - platform: bh1750
+    name: "BH1750 Illuminance"
+    address: 0x23
+    update_interval: 60s
+
+  - platform: aht10
+    temperature:
+      name: "Temperature"
+    humidity:
+      name: "Humidity"
+    update_interval: 60s
+
+  - platform: ld2410
+    moving_distance:
+      name : "Moving Distance"
+    still_distance:
+      name: "Still Distance"
+    moving_energy:
+       name: "Move Energy"
+    still_energy:
+      name: "Still Energy"
+    detection_distance:
+      name: "Detection Distance"   
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: 6
+      mode:
+        input: true
+      inverted: false
+    name: "Motion 1"
+    device_class: motion
+  
+  - platform: gpio
+    pin: 5
+    name: "Tamper"
+
+  - platform: ld2410
+    has_target:
+      name : "Presence"
+      id: presence
+      on_press:
+        then:
+        - globals.set:
+            id: color_g
+            value: '1'  
+        - light.turn_on:
+            id: led1
+            color_brightness: $led_brightness
+            red: !lambda "return id(color_r);"
+            green: !lambda "return id(color_g);"
+            blue: !lambda "return id(color_b);"
+        - switch.turn_on: ssr1
+      on_release:
+        then:
+        - globals.set:
+            id: color_g
+            value: '0'
+        - light.turn_on:
+            id: led1
+            color_brightness: $led_brightness
+            red: !lambda "return id(color_r);"
+            green: !lambda "return id(color_g);"
+            blue: !lambda "return id(color_b);"
+        - switch.turn_off: ssr1
+      
+    has_still_target:
+      name: "Still Target"
+      id: still
+      on_press:
+        then:
+        - globals.set:
+            id: color_b
+            value: '1'  
+        - light.turn_on:
+            id: led1
+            color_brightness: $led_brightness
+            red: !lambda "return id(color_r);"
+            green: !lambda "return id(color_g);"
+            blue: !lambda "return id(color_b);"
+      on_release:
+        then:
+        - globals.set:
+            id: color_b
+            value: '0'
+        - light.turn_on:
+            id: led1
+            color_brightness: $led_brightness
+            red: !lambda "return id(color_r);"
+            green: !lambda "return id(color_g);"
+            blue: !lambda "return id(color_b);"
+
+    has_moving_target:
+      name: "Moving Target"
+      id: movement
+      on_press:
+        then:
+        - globals.set:
+            id: color_r
+            value: '1'  
+        - light.turn_on:
+            id: led1
+            color_brightness: $led_brightness
+            red: !lambda "return id(color_r);"
+            green: !lambda "return id(color_g);"
+            blue: !lambda "return id(color_b);"
+      on_release:
+        then:
+        - globals.set:
+            id: color_r
+            value: '0'
+        - light.turn_on:
+            id: led1
+            color_brightness: $led_brightness
+            red: !lambda "return id(color_r);"
+            green: !lambda "return id(color_g);"
+            blue: !lambda "return id(color_b);"
+
+
+switch:
+  - platform: gpio
+    pin: 10
+    name: "2EOL Output"
+    id: ssr1
+  - platform: ld2410
+    engineering_mode:
+      name: "engineering mode"
+      restore_mode: always_off
+    bluetooth:
+      name: "control bluetooth"
+      id: btswitch
+
+number:
+  - platform: ld2410
+    timeout:
+      name: timeout
+    light_threshold:
+      name: light threshold
+    max_move_distance_gate:
+      name: max move distance gate
+    max_still_distance_gate:
+      name: max still distance gate
+    g0:
+      move_threshold:
+        name: g0 move threshold
+      still_threshold:
+        name: g0 still threshold
+    g1:
+      move_threshold:
+        name: g1 move threshold
+      still_threshold:
+        name: g1 still threshold
+    g2:
+      move_threshold:
+        name: g2 move threshold
+      still_threshold:
+        name: g2 still threshold
+    g3:
+      move_threshold:
+        name: g3 move threshold
+      still_threshold:
+        name: g3 still threshold
+    g4:
+      move_threshold:
+        name: g4 move threshold
+      still_threshold:
+        name: g4 still threshold
+    g5:
+      move_threshold:
+        name: g5 move threshold
+      still_threshold:
+        name: g5 still threshold
+    g6:
+      move_threshold:
+        name: g6 move threshold
+      still_threshold:
+        name: g6 still threshold
+    g7:
+      move_threshold:
+        name: g7 move threshold
+      still_threshold:
+        name: g7 still threshold
+    g8:
+      move_threshold:
+        name: g8 move threshold
+      still_threshold:
+        name: g8 still threshold
+
+light:
+  - platform: esp32_rmt_led_strip
+    rgb_order: GRB
+    chipset: WS2812
+    id: led1
+    name: "Status LED"
+    rmt_channel: 1
+    pin: GPIO7
+    num_leds: 1
