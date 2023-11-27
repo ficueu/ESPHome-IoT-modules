@@ -31,13 +31,13 @@
     - 1x TTP223 (IN2).
 
 > [!TIP]
-> Domyślna konfiguracja WiFi SSID: ESP-RGBWW PASS: 12345678
+> Domyślna konfiguracja WiFi [b]SSID: ESP-RGBWW PASS: 12345678[/b]
 >
 > Domyślny yaml: https://github.com/ficueu/ESPHome-IoT-modules/tree/main/ESP-RGBWW/esp-rgbww-v10.yaml
 
 ### Pinout:
 
-![alt text](https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-RGBWW/images/pcb1.jpg)
+![alt text](https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-RGBWW/images/pcb1.png)
 
 
 ```
