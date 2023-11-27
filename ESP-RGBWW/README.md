@@ -32,6 +32,7 @@
 
 > [!TIP]
 > Domyślna konfiguracja WiFi SSID: ESP-RGBWW PASS: 12345678
+>
 > Domyślny yaml: https://github.com/ficueu/ESPHome-IoT-modules/tree/main/ESP-RGBWW/esp-rgbww-v10.yaml
 
 ### Pinout:
