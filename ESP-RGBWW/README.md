@@ -33,7 +33,10 @@
 > [!TIP]
 > Domyślna konfiguracja WiFi **SSID: ESP-RGBWW PASS: 12345678**
 >
-> Domyślny yaml: https://github.com/ficueu/ESPHome-IoT-modules/tree/main/ESP-RGBWW/esp-rgbww-v10.yaml
+> Urządzenie jest wstępnie zaprogramowane. Po połączeniu się z urządzeniem przez WiFi można podać dane naszej sieci WiFi abu urządzenie się z nią połączyło. Jeśli wszystko przebiegnie pomyślnie to urządzenie powinno być widoczne w dodatku ESPHome z opcją **ADOPT**, po wybraniu tej opcji automatycznie zostanie pobrane oprogramowanie i sterownik zostanie skonfigurowany do działania.
+
+Domyślny yaml: https://github.com/ficueu/ESPHome-IoT-modules/tree/main/ESP-RGBWW/esp-rgbww-v10.yaml
+
 
 ### Pinout:
 
