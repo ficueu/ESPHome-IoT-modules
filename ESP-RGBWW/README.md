@@ -1,23 +1,55 @@
 # ESP-RGBWW
-ESP32C3-RGBWW: 5CH LED controller.
 
-
-Features:
-* ESPHome compatible,
-* BTproxy,
-* 5x low side mosfet (suitable for led strips),
-* 4x GPIO on pinhead (addressable leds output, switch input, motion sensor input, sensors and so more),
-* 3.3V, 5V, GND on pinhead for sensors powering,
-* dual power input (high and low power) - module can be powered by small power supply (while leds are off) and can enable high power supply for powering led, 
-* USBC for flashing,
-* suitable for 12-24V led strip (or 5V addressable with external power supply),
-* 16A screw terminal block connectors for high power input/output,
-* LED: status (green).
+## ESP33-RGBWW: 5 kanałowy sterownik LED działający pod kontrolą ESPHome/WLED (WiFi).
 
 ![alt text](https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-RGBWW/images/img1.jpg)
 
-## PROJECT STATUS: testing max power capability and heat dissipation.
+### Funkcje i cechy sterownika:
+* zgodny z ESPHome/WLED,
+* 5 wyjść wysokoprądowych na złączach śrubowych (mosfet typu n),
+* 4 wejścia/wyjścia GPIO na listwie kołkowej (przyciski, sensory, czujniki ruchu, LEDy adresowalne),
+* GND, 3.3V (200mA), 5V (200mA) na listwie kołkowej (do zasilania czujników),
+* możliwość zasilenia logiki z zewnętrznego zasilacza o dużej sprawności (7-24V),
+* złącze USB-C do programowania,
+* możliwość uruchomienia BTProxy (ESPHome),
+* LED statusu urządzenia,
+* maksymalne obciążenie sumaryczne 12A, ale nie więcej niż 4A na kanał,
+* zasilanie 7-24V,
+* wymiary: 44x48x15 [mm].
+
+### Przykładowa konfiguracja sterownika:
+
+1. Przykład 1:
+    - 1x LED 12V RGB (OUT1-3),
+    - 2x LED 12V W (OUT4-5),
+    - 1x LED 5V WS2812B (IN4),
+    - 1x LD2410 (IN1-2).
+2. Przykład 2:
+    - 5x LED 24V W (OUT1-5),
+    - 1x LED 5V WS2812B (IN4),
+    - 1x DS18B20 (IN3),
+    - 1x TTP223 (IN2).
+
+> [!TIP]
+> Domyślna konfiguracja WiFi SSID: ESP-RGBWW PASS: 12345678
+> Domyślny yaml: https://github.com/ficueu/ESPHome-IoT-modules/tree/main/ESP-RGBWW/esp-rgbww-v10.yaml
+
+### Pinout:
+
+![alt text](https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-RGBWW/images/pcb1.jpg)
 
 
+```
+OUT1 - GPIO00
+OUT2 - GPIO01
+OUT3 - GPIO03
+OUT4 - GPIO04
+OUT5 - GPIO05
 
+IN1 - GPIO06
+IN2 - GPIO21
+IN3 - GPIO20
+IN4 - GPIO07
 
+LED - GPIO10
+```
