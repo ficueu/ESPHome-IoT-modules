@@ -37,6 +37,8 @@
 
 Domyślny yaml: https://github.com/ficueu/ESPHome-IoT-modules/tree/main/ESP-RGBWW/esp-rgbww-v10.yaml
 
+Domyślny plik bin: https://github.com/ficueu/ESPHome-IoT-modules/main/ESP-RGBWW/esp-rgbww-v10-factory-20231102.bin
+Plik **.bin** można wgrać przez https://web.esphome.io
 
 ### Pinout:
 
