@@ -123,13 +123,13 @@ ethernet:
 #UART Settings
 uart:
   - id: RS1
-    rx_pin: GPIO34
-    tx_pin: GPIO15
+    rx_pin: GPIO39
+    tx_pin: GPIO14
     baud_rate: 9600
 
   - id: RS2
-    rx_pin: GPIO39
-    tx_pin: GPIO14
+    rx_pin: GPIO34
+    tx_pin: GPIO15
     baud_rate: 9600      
 
 
