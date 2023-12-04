@@ -141,10 +141,10 @@ uart:
 
 modbus:
   - id: MODBUS1
-    flow_control_pin: 16  
+    flow_control_pin: 13  
     uart_id: RS1
   - id: MODBUS2
-    flow_control_pin: 13  
+    flow_control_pin: 16  
     uart_id: RS2
 
 
