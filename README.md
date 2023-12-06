@@ -24,6 +24,8 @@
 
  ESP32C3 based module with 5 LED channel, dual power input and 4 GPIO for advanced users.
 
-5. HVAC (climate controller) - COMING SOON
+[5. Climate HVAC controller](https://github.com/ficueu/ESPHome-IoT-modules/tree/main/ESP-ACW)
+
+<img src=https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-ACW/images/img1.jpg width=20% height=20%>
 
  ESP32C3 based module with UART and IR input/output. Originally designed for Haier AC but it can be adopted for more brands.
