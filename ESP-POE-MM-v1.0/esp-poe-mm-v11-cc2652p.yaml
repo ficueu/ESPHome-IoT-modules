@@ -61,9 +61,9 @@ uart:
     tx_pin: GPIO15
     baud_rate: 115200
 
-web_server:
-  port: 80
-  version: 1
+# web_server:
+#   port: 80
+#   version: 1
   
 external_components:
   - source: github://oxan/esphome-stream-server
