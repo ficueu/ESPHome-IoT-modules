@@ -1,6 +1,9 @@
 ncp-uart-hw - zigbee firmware
+
 ot-rcp - thread firmware
+
 rcp-uart-802154 - multiprotocol firmware
+
 
 Currently only Zigbee firmware is supported by LAN gateway in Home Assistant.
 
