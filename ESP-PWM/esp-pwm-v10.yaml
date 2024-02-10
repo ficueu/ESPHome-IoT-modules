@@ -56,6 +56,7 @@ output:
   - platform: ledc
     pin: GPIO6
     id: PWM_TX
+    inverted: true
     frequency: 200Hz
 
 fan:
@@ -66,5 +67,14 @@ fan:
 sensor:
   - platform: pulse_width
     pin: GPIO7
-    name: "Odczytany PWM"
+    name: "Odczytany PWM [RAW]"
+    id: pump_pwm_read_raw
     update_interval: 10s
+    on_value:
+      - sensor.template.publish:
+          id: pump_pwm_read
+          state: !lambda 'return (id(pump_pwm_read_raw).state/0.01333)*100;' 
+
+  - platform: template
+    name: "Odczytany PWM [%]"
+    id: pump_pwm_read
