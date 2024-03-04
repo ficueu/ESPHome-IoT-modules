@@ -1,0 +1,125 @@
+substitutions:
+  name: esp-poe-mm-v13-zb-rs
+  friendly_name: ESP32 PoE Multi Gateway v1.3 (ZIGBEE+RS485)
+
+esphome:
+  name: "${name}"
+  friendly_name: "${friendly_name}"
+
+  #name_add_mac_suffix: true
+
+  project:
+    name: "ficueu.esp-poe-mm-v13-zb-rs"
+    version: "1.3"
+
+  on_boot:
+    priority: 800.0
+    then:
+      - output.turn_off: zbBSL
+      - output.turn_off: zbRST
+
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+
+dashboard_import:
+  package_import_url: github://ficueu/ESPHome-IoT-modules/ESP-POE-MM-v1.0/esp-poe-mm-v13-zb-rs.yaml@main
+  import_full_config: true
+
+external_components:
+  - source: github://oxan/esphome-stream-server
+
+logger:
+
+api:
+  reboot_timeout: 0s
+
+ota:
+
+status_led:
+  pin:
+    number: 2
+    inverted: true
+
+sensor:
+  - platform: uptime
+    name: GW uptime
+
+ethernet:
+  type: LAN8720
+  mdc_pin: GPIO23
+  mdio_pin: GPIO18
+  clk_mode: GPIO17_OUT
+  phy_addr: 1
+  power_pin: GPIO12
+  
+  
+#UART Settings
+uart:
+  - id: ZIGBEE
+    rx_pin: GPIO34
+    tx_pin: GPIO15
+    baud_rate: 115200
+
+  - id: RS485_1
+    rx_pin: GPIO39
+    tx_pin: GPIO14
+    baud_rate: 9600   
+
+modbus:
+  - id: MODBUS1
+    flow_control_pin: 13  
+    uart_id: RS485_1
+
+time:
+  - platform: sntp
+    id: time_sntp
+
+web_server:
+  
+button:
+  - platform: restart
+    name: "Gateway restart"
+
+  - platform: template
+    name: "ZigBee force update"
+    on_press:
+      - output.turn_on: zbBSL
+      - delay: 100ms
+      - output.turn_on: zbRST
+      - delay: 100ms 
+      - output.turn_off: zbRST
+      - delay: 100ms
+      - output.turn_off: zbBSL
+      - delay: 100ms
+      - logger.log: "Done. Please update FW now."
+
+  - platform: output
+    name: "ZigBee reset"
+    output: zbRST
+    id: btnzbRST
+    duration: 1s
+
+output:
+  - platform: gpio
+    pin: 16
+    id: zbRST
+    inverted: yes
+  - platform: gpio
+    pin: 32
+    id: zbBSL
+    inverted: yes
+
+stream_server:
+  id: zigbee_stream
+  uart_id: ZIGBEE
+  port: 1234
+    
+esp32_ble_tracker:
+ scan_parameters:
+   interval: 1100ms
+   window: 1100ms
+
+bluetooth_proxy:
+ active: true
