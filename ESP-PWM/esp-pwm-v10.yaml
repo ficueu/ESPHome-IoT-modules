@@ -1,7 +1,6 @@
 substitutions:
   name: pump-driver-v1
   friendly_name: Pump pwm driver v1.0
-  led_brightness: 50%
   
 esphome:
   name: "${name}"
@@ -57,18 +56,20 @@ output:
     pin: GPIO6
     id: PWM_TX
     inverted: true
-    frequency: 200Hz
+    frequency: 100Hz
 
 fan:
   - platform: speed
     output: PWM_TX
     name: "Zadany PWM"
+    restore_mode: RESTORE_DEFAULT_OFF
 
 sensor:
   - platform: pulse_width
     pin: GPIO7
     name: "Odczytany PWM [RAW]"
     id: pump_pwm_read_raw
+    internal: true
     update_interval: 10s
     on_value:
       - sensor.template.publish:
@@ -76,5 +77,5 @@ sensor:
           state: !lambda 'return (id(pump_pwm_read_raw).state/0.01333)*100;' 
 
   - platform: template
-    name: "Odczytany PWM [%]"
+    name: "Odczytany PWM"
     id: pump_pwm_read
