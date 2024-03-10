@@ -6,6 +6,7 @@
 
 <details>
 <summary> RGBWW v.1.1 (aktualna)</summary>
+
 ### Funkcje i cechy sterownika:
 * zgodny z ESPHome/WLED,
 * 5 wyjść wysokoprądowych na złączach śrubowych (mosfet typu n),
@@ -46,6 +47,7 @@ LED - GPIO10
 
 <details>
 <summary> RGBWW v.1.0</summary>
+
 ### Funkcje i cechy sterownika:
 * zgodny z ESPHome/WLED,
 * 5 wyjść wysokoprądowych na złączach śrubowych (mosfet typu n),
