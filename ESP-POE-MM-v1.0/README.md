@@ -10,7 +10,8 @@
 <details>
 <summary> ESP-POE-MM-v1.3 [PL] (aktualna)</summary>
 
-Funkcje:
+
+### Funkcje:
 * ESP32 z modułem LAN8720,
 * zasilanie PoE 802.3af/802.3at (36-57 VDC),
 * zasilanie POE pasywne 12-35V (po zlutowaniu zworki),
@@ -136,7 +137,8 @@ serial:
 <details>
 <summary> ESP-POE-MM-v1.2 [ENG]</summary>
 
-Features:
+
+### Features:
 * ESPHome compatible,
 * ESP32-S (with U.FL connector) used as BLE receiver, main gateway controller,
 * Ebyte E72-2G4M20S1E (CC2652p with U.FL connector) as ZigBee coordinator (on external board),
@@ -276,7 +278,8 @@ serial:
 <details>
 <summary>INSTRUKCJA [PL]</summary>
 
-Moduł jest gotowy do działania, domyślnie włączony jest klient DHCP. Wystarczy podłączyć moduł do switcha PoE, podać adres modułu w konfiguracja Z2M lub ZHA wraz z portem [b]1234[/b] oraz dodać urządzenie przez integrację ESPHome (urządzenie zostanie wykryte automatycznie).
+
+Moduł jest gotowy do działania, domyślnie włączony jest klient DHCP. Wystarczy podłączyć moduł do switcha PoE, podać adres modułu w konfiguracja Z2M lub ZHA wraz z portem **1234** oraz dodać urządzenie przez integrację ESPHome (urządzenie zostanie wykryte automatycznie).
 
 Dodatkowo można dodać urządzenie do listy urządzeń w dodatku ESPHome - umożliwi to dokładną konfigurację modułu oraz aktualizowanie jego oprogramowania.
 1. Zainstaluj dodatek ESPHome: https://my.home-assistant.io/redirect/supervisor_addon/?addon=5c53de3b_esphome&repository_url=https%3A%2F%2Fgithub.com%2Fesphome%2Fhome-assistant-addon
@@ -284,13 +287,13 @@ Dodatkowo można dodać urządzenie do listy urządzeń w dodatku ESPHome - umo�
 3. Kliknij **Adopt** przy nowo wykrytym urządzeniu [ESP32 PoE Multi Gateway v1.3 (ZIGBEE+RS485)].
 4. Kliknij **Install** i poczekaj aż oprogramowanie zostanie zainstalowane na urządzeniu.
 
-Konfiguracja dla Z2M (zamień IP-URZADZENIA na adres IP)
+Konfiguracja dla Z2M (zamień IP-URZADZENIA na adres IP):
 
 ```
   port: tcp://IP-URZADZENIA:1234
 ```
 
-alternatywnie możesz skorzystać z aliasu adresu IP (nie zawsze ta metoda będzie działała):
+Alternatywnie możesz skorzystać z aliasu adresu IP (nie zawsze ta metoda będzie działała):
 
 ```
   port: tcp://esp-poe-mm-v13-zb-rs.local:1234
@@ -301,6 +304,7 @@ alternatywnie możesz skorzystać z aliasu adresu IP (nie zawsze ta metoda będz
 
 <details>
 <summary>MANUAL [EN]</summary>
+
 
 Module is ready to use, you can simply plug in into PoE, configure Z2M or ZHA with right IP address and add device to HA via ESPHome integration (device should be automatically recognized by Home Assistant).
 
