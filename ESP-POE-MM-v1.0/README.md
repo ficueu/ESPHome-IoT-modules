@@ -272,8 +272,9 @@ serial:
 </details>
 
 ### Instrukcje
+
 <details>
-<summary>INSTRUKCJA [PL]<summary>
+<summary>INSTRUKCJA [PL]</summary>
 
 Moduł jest gotowy do działania, domyślnie włączony jest klient DHCP. Wystarczy podłączyć moduł do switcha PoE, podać adres modułu w konfiguracja Z2M lub ZHA wraz z portem [b]1234[/b] oraz dodać urządzenie przez integrację ESPHome (urządzenie zostanie wykryte automatycznie).
 
