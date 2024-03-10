@@ -4,7 +4,9 @@
 
 ![alt text](https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-RGBWW/images/img2.jpg)
 
-### Moduły są na bieżąco aktualizowane i modyfikowane przez co zyskują nowe funkcjonalności, poniżej dostępna jest rozwijana lista z opisami poszczególnych rewizji HW.
+### Moduły są na bieżąco aktualizowane i modyfikowane przez co zyskują nowe funkcjonalności.
+Poniżej dostępna jest rozwijana lista z opisami poszczególnych rewizji HW.
+
 
 <details>
 <summary> RGBWW v.1.1 (aktualna)</summary>
@@ -89,6 +91,7 @@ LED - GPIO10
 ```
 
 </details>
+
 
 ### Przykładowa konfiguracja sterownika:
 
