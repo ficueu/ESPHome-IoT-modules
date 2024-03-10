@@ -31,7 +31,7 @@ Domyślny plik bin: https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-
 
 ### Pinout:
 
-![alt text](https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-RGBWW/images/pcb1.png)
+<img src=https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-RGBWW/images/pcb1.png width=50% height=50%>
 
 
 ```
@@ -72,7 +72,7 @@ Domyślny plik bin: https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-
 
 ### Pinout:
 
-![alt text](https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-RGBWW/images/pcb1.png)
+<img src=https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-RGBWW/images/pcb1.png width=50% height=50%>
 
 
 ```
