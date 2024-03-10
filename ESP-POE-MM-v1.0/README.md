@@ -14,7 +14,7 @@
 ### Funkcje:
 * ESP32 z modułem LAN8720,
 * zasilanie PoE 802.3af/802.3at (36-57 VDC),
-* zasilanie POE pasywne 12-35V (po zlutowaniu zworki),
+* zasilanie PoE pasywne 12-35V (po zlutowaniu zworki),
 * zasilanie DC (złącze śrubowe) 10-57V,
 * Złącze USBC do programowania,
 * BT proxy lub natywna obsługa urządzeń BT/BLE przez komponenty esphome,
