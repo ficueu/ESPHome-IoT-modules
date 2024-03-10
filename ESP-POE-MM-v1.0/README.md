@@ -300,7 +300,7 @@ alternatywnie możesz skorzystać z aliasu adresu IP (nie zawsze ta metoda będz
 </details>
 
 <details>
-<summary>MANUAL [EN]<summary>
+<summary>MANUAL [EN]</summary>
 
 Module is ready to use, you can simply plug in into PoE, configure Z2M or ZHA with right IP address and add device to HA via ESPHome integration (device should be automatically recognized by Home Assistant).
 
