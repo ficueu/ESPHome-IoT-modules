@@ -5,8 +5,10 @@
  <img src="https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-POE-MM-v1.0/Images/esp-poe-mm1.jpg" width=30% height=30%>
 
 
+### Wersje sprzętowe:
+
 <details>
-<summary> ESP-POE-MM-v1.3 [PL]</summary>
+<summary> ESP-POE-MM-v1.3 [PL] (aktualna)</summary>
 
 Funkcje:
 * ESP32 z modułem LAN8720,
@@ -269,7 +271,7 @@ serial:
 
 </details>
 
-
+### Instrukcje
 <details>
 <summary>INSTRUKCJA [PL]<summary>
 
@@ -295,6 +297,7 @@ alternatywnie możesz skorzystać z aliasu adresu IP (nie zawsze ta metoda będz
 
 
 </details>
+
 <details>
 <summary>MANUAL [EN]<summary>
 
