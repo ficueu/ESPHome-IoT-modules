@@ -45,6 +45,7 @@ IN4 - GPIO02*
 LED - GPIO10
 ```
 
+</details>
 <details>
 <summary> RGBWW v.1.0</summary>
 
@@ -85,7 +86,6 @@ IN4 - GPIO07
 LED - GPIO10
 ```
 
-</details>
 </details>
 
 ### Przykładowa konfiguracja sterownika:
