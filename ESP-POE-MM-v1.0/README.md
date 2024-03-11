@@ -6,7 +6,7 @@
 
 
 ### Wersje sprzętowe:
-
+  
 <details>
 <summary> ESP-POE-MM-v1.3 [PL] (aktualna)</summary>
 
