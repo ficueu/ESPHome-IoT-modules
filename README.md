@@ -16,16 +16,24 @@
 
    <img src="https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-MBUS/Images/esp-mbus1.jpg" width=20% height=20%>
 
- ESP32 based module with CC1101.
+ ESP32c3 based module with CC1101 designed for wM-BUS.
 
 [4. RGBWW controller](https://github.com/ficueu/ESPHome-IoT-modules/tree/main/ESP-RGBWW)
 
 <img src=https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-RGBWW/images/img1.jpg width=20% height=20%>
 
- ESP32C3 based module with 5 LED channel, dual power input and 4 GPIO for advanced users.
+ ESP32c3 based module with 5 LED channel, dual power input and 4 GPIO for advanced users.
 
 [5. Climate HVAC controller](https://github.com/ficueu/ESPHome-IoT-modules/tree/main/ESP-ACW)
 
 <img src=https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-ACW/images/img1.jpg width=20% height=20%>
 
- ESP32C3 based module with UART and IR input/output. Originally designed for Haier AC but it can be adopted for more brands.
+ ESP32c3 based module with UART and IR input/output. Originally designed for Haier AC but it can be adopted for more brands.
+
+[6. Garage controller](https://github.com/ficueu/ESPHome-IoT-modules/tree/main/ESP-GARAGE)
+
+ <img src="https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-GARAGE/Images/esp-garage1.jpg" width=20% height=20%>
+
+[7. Interface gateway](https://github.com/ficueu/ESPHome-IoT-modules/tree/main/ESP-INTF)
+
+ <img src="https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-INTF/Images/esp-intf1.jpg" width=20% height=20%>
