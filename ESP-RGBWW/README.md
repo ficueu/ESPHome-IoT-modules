@@ -2,7 +2,7 @@
 
 ## ESP33-RGBWW: 5 kanałowy sterownik LED działający pod kontrolą ESPHome/WLED (WiFi).
 
- <img src="https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-RGBWW/Images/esp-garage11.jpg" width=30% height=30%>
+ <img src="https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-RGBWW/Images/esp-rgbww11.jpg" width=30% height=30%>
 
 ### Moduły są na bieżąco aktualizowane i modyfikowane przez co zyskują nowe funkcjonalności.
 Poniżej dostępna jest rozwijana lista z opisami poszczególnych rewizji HW.
