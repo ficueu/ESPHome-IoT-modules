@@ -81,8 +81,8 @@ sensor:
 
 canbus:
   - platform: esp32_can
-    tx_pin: GPIO5
-    rx_pin: GPIO4
+    tx_pin: GPIO4
+    rx_pin: GPIO5
     can_id: 10
     bit_rate: 125kbps
     on_frame:
