@@ -50,13 +50,13 @@ ethernet:
 #UART Settings
 uart:  
   - id: RS485_1
-    rx_pin: GPIO36
-    tx_pin: GPIO15
+    rx_pin: GPIO39
+    tx_pin: GPIO14
     baud_rate: 9600   
 
 modbus:
   - id: MODBUS1
-    flow_control_pin: 16  
+    flow_control_pin: 13  
     uart_id: RS485_1
 
 button:
