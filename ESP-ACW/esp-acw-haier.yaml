@@ -45,9 +45,6 @@ wifi:
 
 captive_portal:
 
-external_components:
-  - source: github://paveldn/haier-esphome
-
 status_led:
   pin:
     number: 10
@@ -69,8 +66,6 @@ climate:
     uart_id: uart_haier
     wifi_signal: true           # Optional, default true, enables WiFI signal transmission from ESP to AC
     beeper: true                # Optional, default true, disables beep on commands from ESP
-    outdoor_temperature:        # Optional, outdoor temperature sensor
-      name: "Temperatura zewnętrzna"
     visual:                     # Optional, you can use it to limit min and max temperatures in UI (not working for remote!)
       min_temperature: 16 °C
       max_temperature: 30 °C
@@ -87,6 +82,32 @@ climate:
     - VERTICAL
     - HORIZONTAL
     - BOTH
+
+sensor:
+  - platform: haier
+    haier_id: haier_ac
+    outdoor_temperature:
+      name: "Temperatura zewnetrzna"
+    humidity:
+      name: "Wilgotnosc w pomieszczeniu"
+    compressor_current:
+      name: "Prad kompresora"
+    compressor_frequency:
+      name: "Czestotliwosc kompresora"
+    expansion_valve_open_degree:
+      name: "Stopien otwarcia zaworu"
+    indoor_coil_temperature:
+      name: "Temperatura wymiennika w pomieszczeniu"
+    outdoor_coil_temperature:
+      name: "Temperatura wymiennika zewnetrznego"
+    outdoor_defrost_temperature:
+      name: "Temperatura odszraniania"
+    outdoor_in_air_temperature:
+      name: "Temperatura wlotu powietrza"
+    outdoor_out_air_temperature:
+      name: "Temperatura wylotu powietrza"
+    power:
+      name: "Zuzycie mocy"
 
 button:
   - platform: template
