@@ -33,7 +33,6 @@ external_components:
 logger:
 
 api:
-  reboot_timeout: 0s
 
 ota:
 
@@ -85,10 +84,11 @@ button:
   - platform: template
     name: "ZigBee force update"
     on_press:
+      - switch.turn_on: disrst
       - output.turn_on: zbBSL
       - delay: 100ms
       - output.turn_on: zbRST
-      - delay: 100ms 
+      - delay: 100ms
       - output.turn_off: zbRST
       - delay: 100ms
       - output.turn_off: zbBSL
@@ -100,7 +100,30 @@ button:
     output: zbRST
     id: btnzbRST
     duration: 1s
+    on_press: 
+      then:
+        - logger.log: "Zigbee module reset."
 
+binary_sensor:
+  - platform: stream_server
+    connected:
+      name: "ZB client connected"
+      on_press:
+        then:
+          - if:
+              condition:
+                - switch.is_off: disrst
+              then:
+                - button.press: btnzbRST
+    stream_server: zigbee_stream
+  
+switch:
+  - platform: template
+    name: "Disable auto reset"
+    restore_mode: RESTORE_DEFAULT_OFF
+    optimistic: True
+    id: disrst
+    
 output:
   - platform: gpio
     pin: 16
