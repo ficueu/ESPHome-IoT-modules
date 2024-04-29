@@ -8,6 +8,8 @@ esphome:
   platformio_options:
     board_build.flash_mode: dio
   
+  name_add_mac_suffix: true
+  
   project:
     name: "ficueu.esp-rgbww-v11"
     version: "1.1"
@@ -24,7 +26,6 @@ logger:
 
 # Enable Home Assistant API
 api:
-  reboot_timeout: 0s
 
 ota:
 
@@ -86,11 +87,11 @@ output:
   - platform: ledc
     id: output1
     pin: GPIO7
-    frequency: 18000
+    frequency: 4000
   - platform: ledc
     id: output2
     pin: GPIO3
-    frequency: 18000
+    frequency: 4000
   - platform: ledc
     id: output3
     pin: GPIO10
