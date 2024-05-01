@@ -116,21 +116,32 @@ sensor:
 
   - platform: adc
     pin: GPIO0
-    name: "LED Voltage"
+    name: LED Voltage
     update_interval: 10s
     filters:
-      - skip_initial: 3
-      - multiply: 31
-      - round: 1
+    - skip_initial: 3
+    - multiply: 31
+    - round: 1
 
   - platform: adc
     pin: GPIO1
     name: "LED Current"
     unit_of_measurement: "A"
     update_interval: 10s
+    attenuation: 6db
     filters:
       - skip_initial: 3
-      - offset: -0.010
-      - multiply: 20
+      # - offset: -0.010
+      # - multiply: 20
+      - calibrate_linear:
+          datapoints:
+            - 0.03 -> 0.0
+            - 0.124 -> 3.55
+            - 0.224 -> 7.1
+            - 0.324 -> 10.55
+            - 0.424 -> 14.2
+            - 0.534 -> 17.7  
       - round: 1
-    
+      - lambda: |-
+          if (x >= 0) return x;
+          else return 0;
