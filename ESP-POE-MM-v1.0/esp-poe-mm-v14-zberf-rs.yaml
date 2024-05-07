@@ -83,7 +83,6 @@ button:
   - platform: template
     name: "ZigBee force update"
     on_press:
-      - switch.turn_on: disrst
       - output.turn_on: zbBSL
       - delay: 100ms
       - output.turn_on: zbRST
@@ -122,22 +121,7 @@ binary_sensor:
   - platform: stream_server
     connected:
       name: "ZB client connected"
-      # on_press:
-      #   then:
-      #     - if:
-      #         condition:
-      #           - switch.is_off: disrst
-      #         then:
-      #           - button.press: btnzbRST
     stream_server: zigbee_stream
-  
-switch:
-  - platform: template
-    name: "Disable auto reset"
-    restore_mode: RESTORE_DEFAULT_OFF
-    optimistic: True
-    id: disrst
-
 
 esp32_ble_tracker:
   scan_parameters:
