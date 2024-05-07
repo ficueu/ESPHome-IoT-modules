@@ -1,0 +1,140 @@
+substitutions:
+  name: esp-poe-mm-v14-zb-mbus
+  friendly_name: ESP32 PoE Multi Gateway v1.4 (ZIGBEE+MBUS)
+
+esphome:
+  name: ${name}
+  friendly_name: ${friendly_name}
+
+  name_add_mac_suffix: true
+
+  project:
+    name: ficueu.esp-poe-mm-v14-zb-mbus
+    version: '1.4'
+
+  on_boot:
+    priority: 800.0
+    then:
+    - output.turn_off: zbBSL
+    - output.turn_off: zbRST
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+dashboard_import:
+  package_import_url: 
+    github://ficueu/ESPHome-IoT-modules/ESP-POE-MM-v1.0/esp-poe-mm-v14-zb-mbus.yaml@main
+  import_full_config: true
+
+external_components:
+  - source: github://oxan/esphome-stream-server
+  - source: github://SzczepanLeon/esphome-components@main
+    components: [ wmbus ]
+
+logger:
+
+api:
+
+ota:
+
+status_led:
+  pin:
+    number: 2
+    inverted: true
+
+sensor:
+  - platform: uptime
+    name: "GW uptime"
+
+ethernet:
+  type: LAN8720
+  mdc_pin: GPIO23
+  mdio_pin: GPIO18
+  clk_mode: GPIO17_OUT
+  phy_addr: 1
+  power_pin: GPIO12
+
+
+#UART Settings
+uart:
+  - id: ZIGBEE
+    rx_pin: GPIO34
+    tx_pin: GPIO15
+    baud_rate: 115200
+
+time:
+  - platform: sntp
+    id: time_sntp
+
+button:
+  - platform: restart
+    name: "Gateway restart"
+
+  - platform: template
+    name: "ZigBee force update"
+    on_press:
+      - switch.turn_on: disrst
+      - output.turn_on: zbBSL
+      - delay: 100ms
+      - output.turn_on: zbRST
+      - delay: 100ms
+      - output.turn_off: zbRST
+      - delay: 100ms
+      - output.turn_off: zbBSL
+      - delay: 100ms
+      - logger.log: "Done. Please update FW now."
+
+  - platform: output
+    name: "ZigBee reset"
+    output: zbRST
+    id: btnzbRST
+    duration: 1s
+    on_press: 
+      then:
+        - logger.log: "Zigbee module reset."
+
+output:
+  - platform: gpio
+    pin: 16
+    id: zbRST
+    inverted: yes
+  - platform: gpio
+    pin: 32
+    id: zbBSL
+    inverted: yes
+
+stream_server:
+  id: zigbee_stream
+  uart_id: ZIGBEE
+  port: 1234
+
+binary_sensor:
+  - platform: stream_server
+    connected:
+      name: "ZB client connected"
+      on_press:
+        then:
+          - if:
+              condition:
+                - switch.is_off: disrst
+              then:
+                - button.press: btnzbRST
+    stream_server: zigbee_stream
+  
+switch:
+  - platform: template
+    name: "Disable auto reset"
+    restore_mode: RESTORE_DEFAULT_OFF
+    optimistic: True
+    id: disrst
+
+
+wmbus:
+  mosi_pin: GPIO5
+  miso_pin: GPIO4
+  clk_pin:  GPIO13
+  cs_pin:   GPIO14
+  gdo0_pin: GPIO33
+  gdo2_pin: GPIO35
