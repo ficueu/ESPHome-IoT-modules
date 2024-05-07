@@ -138,3 +138,8 @@ wmbus:
   cs_pin:   GPIO14
   gdo0_pin: GPIO33
   gdo2_pin: GPIO35
+
+esp32_ble_tracker:
+
+bluetooth_proxy:
+  active: true
