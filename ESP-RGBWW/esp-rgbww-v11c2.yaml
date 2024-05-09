@@ -127,7 +127,7 @@ sensor:
     pin: GPIO1
     name: "LED Current"
     unit_of_measurement: "A"
-    update_interval: 1s
+    update_interval: 10s
     attenuation: 6db
     filters:
       - skip_initial: 3
