@@ -12,6 +12,8 @@ esphome:
     name: "ficueu.esp-garage-v10"
     version: "1.0"
 
+  name_add_mac_suffix: true
+  
 esp32:
   board: esp32-c3-devkitm-1
   framework:
