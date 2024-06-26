@@ -29,6 +29,7 @@ api:
   reboot_timeout: 0s
 
 ota:
+  platform: esphome
 
 dashboard_import:
   package_import_url: github://ficueu/ESPHome-IoT-modules/ESP-GARAGE/esp-garage-v10.yaml@main

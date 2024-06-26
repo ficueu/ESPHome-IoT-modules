@@ -31,6 +31,7 @@ dashboard_import:
 api:
 
 ota:
+  platform: esphome
 
 wifi:
   ssid: !secret wifi_ssid
