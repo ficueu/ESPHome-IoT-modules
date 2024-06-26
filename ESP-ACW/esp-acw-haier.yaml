@@ -155,43 +155,105 @@ button:
 select:
   - platform: template
     id: nawiew_poziomy
-    name: "Nawiew poziomy"
+    name: "nawiew poziomy"
     entity_category: config
     icon: mdi:arrow-expand-horizontal
-    optimistic: true
-    restore_value: true
-    initial_option: Środek 
+    update_interval: 5s
     options:
-      - Mocno lewo
-      - Lewo
-      - Środek
-      - Prawo
-      - Mocno prawo
-    on_value:
-      then:
-        - climate.haier.set_horizontal_airflow:
-           id: haier_ac
-           horizontal_airflow: !lambda |-
-             return esphome::haier::AirflowHorizontalDirection(i);
+      - "Mocno lewo"
+      - "Lewo"
+      - "Środek"
+      - "Prawo"
+      - "Mocno prawo"
+      - "Auto"
+    lambda: >-
+      switch (id(haier_ac).get_horizontal_airflow().value_or(esphome::haier::hon_protocol::HorizontalSwingMode::CENTER))
+      {
+          case esphome::haier::hon_protocol::HorizontalSwingMode::MAX_LEFT:
+              return std::string("Mocno lewo");
+          case esphome::haier::hon_protocol::HorizontalSwingMode::LEFT:
+              return std::string("Lewo");
+          default:
+          case esphome::haier::hon_protocol::HorizontalSwingMode::CENTER:
+              return std::string("Środek");
+          case esphome::haier::hon_protocol::HorizontalSwingMode::RIGHT:
+              return std::string("Prawo");
+          case esphome::haier::hon_protocol::HorizontalSwingMode::MAX_RIGHT:
+              return std::string("Mocno prawo");
+          case esphome::haier::hon_protocol::HorizontalSwingMode::AUTO:
+              return std::string("Auto");
+      }
+    set_action:
+      - climate.haier.set_horizontal_airflow:
+          id: haier_ac
+          horizontal_airflow: !lambda >-
+            if (x == "Mocno lewo")
+                return esphome::haier::hon_protocol::HorizontalSwingMode::MAX_LEFT;
+            else if (x == "Lewo")
+                return esphome::haier::hon_protocol::HorizontalSwingMode::LEFT;
+            else if (x == "Prawo")
+                return esphome::haier::hon_protocol::HorizontalSwingMode::RIGHT;
+            else if (x == "Mocno prawo")
+                return esphome::haier::hon_protocol::HorizontalSwingMode::MAX_RIGHT;
+            else if (x == "Auto")
+                return esphome::haier::hon_protocol::HorizontalSwingMode::AUTO;
+            else
+                return esphome::haier::hon_protocol::HorizontalSwingMode::CENTER;
   
   - platform: template
     id: nawiew_pionowy
-    name: "Nawiew pionowy"
+    name: "nawiew pionowy"
     entity_category: config
     icon: mdi:arrow-expand-vertical
-    optimistic: true
-    restore_value: true
-    initial_option: Środek 
+    update_interval: 5s
     options:
-      - Zdrowy góra
-      - Mocno góra
-      - Góra
-      - Środek
-      - Dół
-      - Zdrowy dół
-    on_value:
-      then:
-        - climate.haier.set_vertical_airflow:
-           id: haier_ac
-           vertical_airflow: !lambda |-
-             return esphome::haier::AirflowVerticalDirection(i);
+      - "Zdrowy góra"
+      - "Mocno góra"
+      - "Góra"
+      - "Środek"
+      - "Dół"
+      - "Mocno dół"
+      - "Zdrowy dół"
+      - "Auto"
+    lambda: >-
+      switch (id(haier_ac).get_vertical_airflow().value_or(esphome::haier::hon_protocol::VerticalSwingMode::CENTER))
+      {
+          case esphome::haier::hon_protocol::VerticalSwingMode::HEALTH_UP:
+              return std::string("Zdrowy góra");
+          case esphome::haier::hon_protocol::VerticalSwingMode::MAX_UP:
+              return std::string("Mocno góra");
+          case esphome::haier::hon_protocol::VerticalSwingMode::UP:
+              return std::string("Góra");
+          default:
+          case esphome::haier::hon_protocol::VerticalSwingMode::CENTER:
+              return std::string("Środek");
+          case esphome::haier::hon_protocol::VerticalSwingMode::DOWN:
+              return std::string("Dół");
+          case esphome::haier::hon_protocol::VerticalSwingMode::MAX_DOWN:
+              return std::string("Mocno dół");
+          case esphome::haier::hon_protocol::VerticalSwingMode::HEALTH_DOWN:
+              return std::string("Zdrowy dół");
+          case esphome::haier::hon_protocol::VerticalSwingMode::AUTO:
+          case esphome::haier::hon_protocol::VerticalSwingMode::AUTO_SPECIAL:
+              return std::string("Auto");
+      }
+    set_action:
+      - climate.haier.set_vertical_airflow:
+          id: haier_ac
+          vertical_airflow: !lambda >-
+            if (x == "Zdrowy góra")
+                return esphome::haier::hon_protocol::VerticalSwingMode::HEALTH_UP;
+            else if (x == "Mocno Góra")
+                return esphome::haier::hon_protocol::VerticalSwingMode::MAX_UP;
+            else if (x == "Góra")
+                return esphome::haier::hon_protocol::VerticalSwingMode::UP;
+            else if (x == "Dół")
+                return esphome::haier::hon_protocol::VerticalSwingMode::DOWN;
+            else if (x == "Mocno dół")
+                return esphome::haier::hon_protocol::VerticalSwingMode::MAX_DOWN;
+            else if (x == "Zdrowy dół")
+                return esphome::haier::hon_protocol::VerticalSwingMode::HEALTH_DOWN;
+            else if (x == "Auto")
+                return esphome::haier::hon_protocol::VerticalSwingMode::AUTO;
+            else
+                return esphome::haier::hon_protocol::VerticalSwingMode::CENTER;
