@@ -13,7 +13,7 @@ esphome:
     name: "ficueu.esp-mbus-v10"
     version: "1.0"
   
-  name_add_mac_suffix: true
+  name_add_mac_suffix: false
 
 esp32:
   board: esp32-c3-devkitm-1
@@ -64,7 +64,11 @@ wmbus:
   cs_pin:   GPIO7
   gdo0_pin: GPIO3
   gdo2_pin: GPIO1
-  
+
+  all_drivers: false
+  log_all: True
+  #sync_mode: true
+  frequency: 868.950
 
 status_led:
   pin:
