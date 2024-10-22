@@ -37,7 +37,7 @@ Pinout:
 
 Example ESPHome yaml file: https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-INTF/esp-intf-v10.yaml
 
-Compiled binary: https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-INTF/esp-intf-v10-factory-2024.2.2.bin
+Compiled binary: https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-INTF/esp-intf-v10-factory-2024.10.0.bin
 
 ### HOW TO USE?
 
