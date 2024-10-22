@@ -32,3 +32,23 @@ Pinout:
 9: RS485 A 
 10: RS485 B
 ```
+
+## ESPHome yaml config file
+
+Example ESPHome yaml file: https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-INTF/esp-intf-v10.yaml
+
+Compiled binary: https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-INTF/esp-intf-v10-factory-2024.2.2.bin
+
+### HOW TO USE?
+
+1. Install and configure ESPHome addon for Home Assistant: https://esphome.io/guides/getting_started_hassio.html#installing-esphome-dashboard
+
+2. Connect the device to PC/power adapter via USB cable, find network named ESP-INTF and connect to it with password: 12345678.
+
+3. Open the web browser and go to 192.168.4.1 and fill your SSID and password, click on save.
+
+4. Your device should be visible on ESPHome addon with name and green button "ADOPT" - click on this button, install device and flash it.
+If the device can not be adopted please create a new device (name and device type doesn't matter, you can choose esp32 with recommended settings), next edit the device and replace config with Example ESPHome yaml file, next upload configuration via usb cable.
+
+
+
