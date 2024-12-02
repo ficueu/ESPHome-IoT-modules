@@ -5,8 +5,8 @@
 
 ### Specyfikacja:
 * ESP32C3,
-* zasilanie DC: 7-24V,
-* zasilanie AC: 7-20V,
+* zasilanie DC: ~~7-24V~~ 7-30V (nowa wersja),
+* zasilanie AC: ~~7-20V~~ 7-26V (nowa wersja),
 * 2x przekaźniki NO 1A@24VDC/0,5A@125VAC,
 * 2x wejścia izolowane 3-24VDC,
 * wyjście LED adresowalnych WS2812B i podobnych,
