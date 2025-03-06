@@ -50,6 +50,12 @@ status_led:
   pin:
     number: 10
     inverted: false
+
+external_components:
+  - source:
+      type: git
+      url: https://github.com/robertklep/esphome-custom-component
+    components: [ custom, custom_component ]
     
 sensor:
 - platform: custom
