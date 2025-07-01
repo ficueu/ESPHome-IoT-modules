@@ -67,14 +67,14 @@ climate:
       max_temperature: 30 °C
       temperature_step: 1 °C
     supported_modes:
-    - 'OFF'
+    - "OFF"
     - HEAT_COOL
     - COOL
     - HEAT
     - DRY
     - FAN_ONLY
     supported_swing_modes:
-    - 'OFF'
+    - "OFF"
     - VERTICAL
     - HORIZONTAL
     - BOTH
