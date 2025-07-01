@@ -1,0 +1,254 @@
+esphome:
+  name: esp-acw-v13-haier
+  friendly_name: "ESP32C3 ACW v1.3 (Haier)"
+  platformio_options:
+    board_build.flash_mode: dio
+  
+  name_add_mac_suffix: true
+
+  project:
+    name: "ficueu.esp-acw-v13-haier"
+    version: "1.3"
+
+esp32:
+  board: esp32-c3-devkitm-1
+  framework:
+    type: arduino
+
+logger:
+  baud_rate: 0
+
+api:
+
+ota:
+  platform: esphome
+
+web_server:
+  port: 80
+  version: 1
+
+dashboard_import:
+  package_import_url: github://ficueu/ESPHome-IoT-modules/ESP-ACW/esp-acw-v13-haier.yaml@main
+  import_full_config: true
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "ESP-ACW-HAIER"
+    password: "12345678"
+
+captive_portal:
+
+status_led:
+  pin:
+    number: 6
+    inverted: false
+
+uart:
+    rx_pin: GPIO0
+    tx_pin: GPIO1
+    baud_rate: 9600
+    id: uart_haier
+    debug:
+      direction: BOTH
+
+climate:
+  - platform: haier
+    id: haier_ac
+    protocol: hOn
+    name: "Klimatyzacja" 
+    uart_id: uart_haier
+    wifi_signal: true           # Optional, default true, enables WiFI signal transmission from ESP to AC
+    visual:                     # Optional, you can use it to limit min and max temperatures in UI (not working for remote!)
+      min_temperature: 16 °C
+      max_temperature: 30 °C
+      temperature_step: 1 °C
+    supported_modes:            # Optional, can be used to disable some modes if you don't need them
+    - 'OFF'
+    - HEAT_COOL
+    - COOL
+    - HEAT
+    - DRY
+    - FAN_ONLY
+    supported_swing_modes:      # Optional, can be used to disable some swing modes if your AC does not support it
+    - 'OFF'
+    - VERTICAL
+    - HORIZONTAL
+    - BOTH
+
+sensor:
+  - platform: haier
+    haier_id: haier_ac
+    outdoor_temperature:
+      name: "Temperatura zewnetrzna"
+    humidity:
+      name: "Wilgotnosc w pomieszczeniu"
+    compressor_current:
+      name: "Prad kompresora"
+    compressor_frequency:
+      name: "Czestotliwosc kompresora"
+    expansion_valve_open_degree:
+      name: "Stopien otwarcia zaworu"
+    indoor_coil_temperature:
+      name: "Temperatura wymiennika w pomieszczeniu"
+    outdoor_coil_temperature:
+      name: "Temperatura wymiennika zewnetrznego"
+    outdoor_defrost_temperature:
+      name: "Temperatura odszraniania"
+    outdoor_in_air_temperature:
+      name: "Temperatura wlotu powietrza"
+    outdoor_out_air_temperature:
+      name: "Temperatura wylotu powietrza"
+    power:
+      name: "Zuzycie mocy"
+
+button:
+  - platform: template
+    name: "Health on (uvc)"
+    on_press:
+      then:
+        - climate.haier.health_on: haier_ac
+  - platform: template
+    name: "Health off (uvc)"
+    on_press:
+      then:
+        - climate.haier.health_off: haier_ac
+  - platform: template
+    name: "Self-cleaning"
+    on_press:
+      then:
+        - climate.haier.start_self_cleaning: haier_ac
+  - platform: template
+    name: "Steri-cleaning"
+    on_press:
+      then:
+        - climate.haier.start_steri_cleaning: haier_ac
+  - platform: template
+    name: "Beeper on"
+    on_press:
+      then:
+        - climate.haier.beeper_on: haier_ac
+  - platform: template
+    name: "Beeper off"
+    on_press:
+      then:
+        - climate.haier.beeper_off: haier_ac
+  - platform: template
+    name: "Display off"
+    on_press:
+      then:
+        - climate.haier.display_off: haier_ac
+  - platform: template
+    name: "Display on"
+    on_press:
+      then:
+        - climate.haier.display_on: haier_ac
+
+select:
+  - platform: template
+    id: nawiew_poziomy
+    name: "nawiew poziomy"
+    entity_category: config
+    icon: mdi:arrow-expand-horizontal
+    update_interval: 5s
+    options:
+      - "Mocno lewo"
+      - "Lewo"
+      - "Środek"
+      - "Prawo"
+      - "Mocno prawo"
+      - "Auto"
+    lambda: >-
+      switch (id(haier_ac).get_horizontal_airflow().value_or(esphome::haier::hon_protocol::HorizontalSwingMode::CENTER))
+      {
+          case esphome::haier::hon_protocol::HorizontalSwingMode::MAX_LEFT:
+              return std::string("Mocno lewo");
+          case esphome::haier::hon_protocol::HorizontalSwingMode::LEFT:
+              return std::string("Lewo");
+          default:
+          case esphome::haier::hon_protocol::HorizontalSwingMode::CENTER:
+              return std::string("Środek");
+          case esphome::haier::hon_protocol::HorizontalSwingMode::RIGHT:
+              return std::string("Prawo");
+          case esphome::haier::hon_protocol::HorizontalSwingMode::MAX_RIGHT:
+              return std::string("Mocno prawo");
+          case esphome::haier::hon_protocol::HorizontalSwingMode::AUTO:
+              return std::string("Auto");
+      }
+    set_action:
+      - climate.haier.set_horizontal_airflow:
+          id: haier_ac
+          horizontal_airflow: !lambda >-
+            if (x == "Mocno lewo")
+                return esphome::haier::hon_protocol::HorizontalSwingMode::MAX_LEFT;
+            else if (x == "Lewo")
+                return esphome::haier::hon_protocol::HorizontalSwingMode::LEFT;
+            else if (x == "Prawo")
+                return esphome::haier::hon_protocol::HorizontalSwingMode::RIGHT;
+            else if (x == "Mocno prawo")
+                return esphome::haier::hon_protocol::HorizontalSwingMode::MAX_RIGHT;
+            else if (x == "Auto")
+                return esphome::haier::hon_protocol::HorizontalSwingMode::AUTO;
+            else
+                return esphome::haier::hon_protocol::HorizontalSwingMode::CENTER;
+  
+  - platform: template
+    id: nawiew_pionowy
+    name: "nawiew pionowy"
+    entity_category: config
+    icon: mdi:arrow-expand-vertical
+    update_interval: 5s
+    options:
+      - "Zdrowy góra"
+      - "Mocno góra"
+      - "Góra"
+      - "Środek"
+      - "Dół"
+      - "Mocno dół"
+      - "Zdrowy dół"
+      - "Auto"
+    lambda: >-
+      switch (id(haier_ac).get_vertical_airflow().value_or(esphome::haier::hon_protocol::VerticalSwingMode::CENTER))
+      {
+          case esphome::haier::hon_protocol::VerticalSwingMode::HEALTH_UP:
+              return std::string("Zdrowy góra");
+          case esphome::haier::hon_protocol::VerticalSwingMode::MAX_UP:
+              return std::string("Mocno góra");
+          case esphome::haier::hon_protocol::VerticalSwingMode::UP:
+              return std::string("Góra");
+          default:
+          case esphome::haier::hon_protocol::VerticalSwingMode::CENTER:
+              return std::string("Środek");
+          case esphome::haier::hon_protocol::VerticalSwingMode::DOWN:
+              return std::string("Dół");
+          case esphome::haier::hon_protocol::VerticalSwingMode::MAX_DOWN:
+              return std::string("Mocno dół");
+          case esphome::haier::hon_protocol::VerticalSwingMode::HEALTH_DOWN:
+              return std::string("Zdrowy dół");
+          case esphome::haier::hon_protocol::VerticalSwingMode::AUTO:
+          case esphome::haier::hon_protocol::VerticalSwingMode::AUTO_SPECIAL:
+              return std::string("Auto");
+      }
+    set_action:
+      - climate.haier.set_vertical_airflow:
+          id: haier_ac
+          vertical_airflow: !lambda >-
+            if (x == "Zdrowy góra")
+                return esphome::haier::hon_protocol::VerticalSwingMode::HEALTH_UP;
+            else if (x == "Mocno Góra")
+                return esphome::haier::hon_protocol::VerticalSwingMode::MAX_UP;
+            else if (x == "Góra")
+                return esphome::haier::hon_protocol::VerticalSwingMode::UP;
+            else if (x == "Dół")
+                return esphome::haier::hon_protocol::VerticalSwingMode::DOWN;
+            else if (x == "Mocno dół")
+                return esphome::haier::hon_protocol::VerticalSwingMode::MAX_DOWN;
+            else if (x == "Zdrowy dół")
+                return esphome::haier::hon_protocol::VerticalSwingMode::HEALTH_DOWN;
+            else if (x == "Auto")
+                return esphome::haier::hon_protocol::VerticalSwingMode::AUTO;
+            else
+                return esphome::haier::hon_protocol::VerticalSwingMode::CENTER;
