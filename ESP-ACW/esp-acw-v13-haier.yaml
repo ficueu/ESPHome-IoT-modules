@@ -66,14 +66,14 @@ climate:
       min_temperature: 16 °C
       max_temperature: 30 °C
       temperature_step: 1 °C
-    supported_modes:            # Optional, can be used to disable some modes if you don't need them
+    supported_modes:
     - 'OFF'
     - HEAT_COOL
     - COOL
     - HEAT
     - DRY
     - FAN_ONLY
-    supported_swing_modes:      # Optional, can be used to disable some swing modes if your AC does not support it
+    supported_swing_modes:
     - 'OFF'
     - VERTICAL
     - HORIZONTAL
