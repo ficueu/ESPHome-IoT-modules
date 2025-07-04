@@ -50,7 +50,7 @@ web_server:
   
 
 external_components:
-  - source: github://SzczepanLeon/esphome-components@main
+  - source: github://SzczepanLeon/esphome-components@version_4
     components: [ wmbus ]
 
 time:
