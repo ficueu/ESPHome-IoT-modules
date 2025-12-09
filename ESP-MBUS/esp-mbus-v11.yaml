@@ -10,7 +10,7 @@ esphome:
     board_build.flash_mode: dio
 
   project:
-    name: "ficueu.esp-mbus-v10"
+    name: "ficueu.esp-mbus-v11"
     version: "1.1"
   
   name_add_mac_suffix: true
@@ -44,9 +44,9 @@ wifi:
 
 # captive_portal:
 
-# web_server:
-#   port: 80
-#   version: 1
+web_server:
+  port: 80
+  version: 1
   
 
 external_components:
