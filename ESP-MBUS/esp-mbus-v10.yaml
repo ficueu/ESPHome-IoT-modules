@@ -1,5 +1,5 @@
 substitutions:
-  name: "esp-mbus"
+  name: "esp-mbus-v10"
   friendly_name: ESP32C3 CC1101 MBUS GATEWAY v1.0
 
 esphome:
@@ -13,7 +13,7 @@ esphome:
     name: "ficueu.esp-mbus-v10"
     version: "1.0"
   
-  name_add_mac_suffix: false
+  name_add_mac_suffix: true
 
 esp32:
   board: esp32-c3-devkitm-1
