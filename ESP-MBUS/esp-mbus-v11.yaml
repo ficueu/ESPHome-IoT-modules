@@ -20,7 +20,7 @@ esp32:
     type: arduino
 
 logger:
-  level: DEBUG
+  level: INFO
 
 dashboard_import:
   package_import_url: github://ficueu/ESPHome-IoT-modules/ESP-MBUS/esp-mbus-v11.yaml@main
