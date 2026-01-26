@@ -55,7 +55,6 @@ light:
     rgb_order: GRB
     pin: GPIO10
     num_leds: 10
-    rmt_channel: 0
     chipset: ws2812
     name: "LED"
     id: door_led
