@@ -14,14 +14,14 @@
 * LED statusu urządzenia.
 
 > [!TIP]
-> Domyślna konfiguracja WiFi **SSID: ESP-ACW PASS: 12345678**
+> Domyślna konfiguracja WiFi **SSID: ESP-ACW PASS: 12345678 IP: 192.168.4.1**
 >
-> Urządzenie jest wstępnie zaprogramowane. Po połączeniu się z urządzeniem przez WiFi można podać dane naszej sieci WiFi abu urządzenie się z nią połączyło. Jeśli wszystko przebiegnie pomyślnie to urządzenie powinno być widoczne w dodatku ESPHome z opcją **ADOPT**, po wybraniu tej opcji automatycznie zostanie pobrane oprogramowanie i sterownik zostanie skonfigurowany do działania.
+> Urządzenie jest wstępnie zaprogramowane. Po połączeniu się z urządzeniem przez WiFi można podać dane naszej sieci WiFi abu urządzenie się z nią połączyło. Jeśli wszystko przebiegnie pomyślnie to urządzenie powinno być widoczne w dodatku ESPHome u góry **Discovered 1 device**, po kliknięcieu **SHOW** należy wybrać **TAKE CONTROL**, po wybraniu tej opcji automatycznie zostanie pobrane i zainstalowane oprogramowanie, a moduł zostanie skonfigurowany do działania.
 
 Domyślny yaml dla urządzeń typu Midea: https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-ACW/esp-acw-midea.yaml
 
 Domyślny yaml dla urządzeń typu Tuya: https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-ACW/esp-acw-tuya.yaml
 
-Domyślny yaml dla urządzeń Haier (smartair, zazwyczaj złącze USB): https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-ACW/esp-acw-haier-smartair.yaml
+Domyślny yaml dla urządzeń Haier (smartair, zazwyczaj złącze USB): https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-ACW/esp-acw-v13-smartair.yaml
 
-Domyślny yaml dla urządzeń Haier (hOn, złącze 4 pin): https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-ACW/esp-acw-haier.yaml
+Domyślny yaml dla urządzeń Haier (hOn, złącze 4 pin): https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-ACW/esp-acw-v13-haier.yaml
