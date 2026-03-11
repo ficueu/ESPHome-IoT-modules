@@ -1,0 +1,94 @@
+esphome:
+  name: esp-acw-v13-midea
+  friendly_name: "ESP32C3 ACW v1.3 (Midea)"
+  platformio_options:
+    board_build.flash_mode: dio
+  
+  name_add_mac_suffix: true
+
+  project:
+    name: "ficueu.esp-acw-v13-midea"
+    version: "1.3"
+
+esp32:
+  board: esp32-c3-devkitm-1
+  framework:
+    type: arduino
+
+logger:
+  baud_rate: 0
+
+api:
+
+ota:
+  platform: esphome
+
+dashboard_import:
+  package_import_url: github://ficueu/ESPHome-IoT-modules/ESP-ACW/esp-acw-v13-midea.yaml@main
+  import_full_config: true
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  
+  ap:
+    ssid: "ESP-ACW-MIDEA"
+    password: "12345678"
+
+captive_portal:
+
+web_server:
+  port: 80
+  version: 1
+
+status_led:
+  pin:
+    number: 6
+    inverted: false
+
+uart:
+    rx_pin: GPIO1
+    tx_pin: GPIO0
+    baud_rate: 9600
+    id: uart_midea
+    debug:
+      direction: BOTH
+
+climate:
+  - platform: midea
+    name: "Klimatyzacja"         # Use a unique name.
+    period: 1s                  # Optional
+    uart_id: uart_midea
+    timeout: 2s                 # Optional
+    num_attempts: 3             # Optional
+    autoconf: true              # Autoconfigure most options.
+    beeper: true                # Beep on commands.
+    visual:                     # Optional. Example of visual settings override.
+      min_temperature: 17 °C    # min: 17
+      max_temperature: 30 °C    # max: 30
+      temperature_step: 0.5 °C  # min: 0.5
+    supported_modes:            # Optional. All capabilities in this section may be detected by autoconf.
+      - FAN_ONLY
+      - HEAT_COOL
+      - COOL
+      - HEAT
+      - DRY
+    custom_fan_modes:           # Optional
+      - SILENT
+      - TURBO
+    supported_presets:          # Optional. All capabilities in this section may be detected by autoconf.
+      - ECO
+      - BOOST
+      - SLEEP
+    custom_presets:             # Optional. All capabilities in this section may be detected by autoconf.
+      - FREEZE_PROTECTION
+    supported_swing_modes:      # Optional
+      - VERTICAL
+      - HORIZONTAL
+      - BOTH
+    outdoor_temperature:        # Optional. Outdoor temperature sensor (may display incorrect values after long inactivity).
+      name: "Temperatura zewnętrzna"
+    power_usage:                # Optional. Power usage sensor (only for devices that support this feature).
+      name: "Zużycie mocy"
+    humidity_setpoint:          # Optional. Indoor humidity sensor (only for devices that support this feature).
+      name: "Wilgotność wewnątrz"
