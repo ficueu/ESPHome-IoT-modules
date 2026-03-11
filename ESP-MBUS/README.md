@@ -28,8 +28,8 @@ Compiled binary: https://github.com/ficueu/ESPHome-IoT-modules/blob/main/ESP-MBU
 
 3. Open the web browser and go to 192.168.4.1 and fill your SSID and password, click on save.
 
-4. Your device should be visible on ESPHome addon with name and green button "ADOPT" - click on this button, install device and flash it.
-If the device can not be adopted please create a new device (name and device type doesn't matter, you can choose esp32 with recommended settings), next edit the device and replace config with Example ESPHome yaml file, next upload configuration via usb cable.
+4. Your device should be visible on ESPHome addon with name and green button "TAKE CONTROL" - click on this button, install device and flash it.
+If the device can not be taken control of, please create a new device (name and device type doesn't matter, you can choose esp32 with recommended settings), next edit the device and replace config with Example ESPHome yaml file, next upload configuration via usb cable.
 
 5. This device is based on SzczepanLeon wmbus component, you can find example configuration here: https://github.com/SzczepanLeon/esphome-components
 
